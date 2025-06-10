@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo con Flask</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+        input[type="text"] { padding: 8px; }
+        input[type="submit"] { padding: 8px 15px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1>¡Hola, {{ name }}!</h1>
+
+    <p>Aplicación web con Flask.</p>
+
+    <form method="GET" action="/">
+        <label for="name">Escribe tu nombre: </label>
+        <input type="text" id="name" name="name" placeholder="Tu nombre aquí">
+        <input type="submit" value="Enviar">
+    </form>
+
+</body>
+</html>
