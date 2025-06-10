@@ -1,11 +1,31 @@
-from flask import Flask, request, render_template
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-app = Flask(__name__)
+import cgi
 
-@app.route('/hello', methods=['GET'])
-def hello():
-    name = request.args.get('name', 'Invitado')
-    return render_template('hello.html', name=name)
+# Establece el encabezado para indicar que se trata de contenido HTML
+print("Content-Type: text/html; charset=UTF-8")  # Especificar UTF-8
+print()  # Salto de línea necesario
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# Obtención de parámetros a través de CGI (opcional)
+
+# Hace que se pueda recibir datos de un formulario HTML
+form = cgi.FieldStorage()
+# Obtiene el valor del parámetro 'name' del formulario si no tiene un valor por defecto como 'Invitado'
+name = form.getvalue('name', 'Invitado')  # Si no se pasa el parámetro 'name', usa 'Invitado'
+
+# Imprimir el contenido HTML
+print(f"""
+<html>
+<head><title>Ejemplo CGI</title></head>
+<body>
+    <h1>¡Hola, {name}!</h1>
+    <p>Este es un ejemplo básico de un script CGI en Python.</p>
+    <form method="GET" action="hello.py">
+        <label for="name">Escribe tu nombre: </label>
+        <input type="text" id="name" name="name">
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
+""")
